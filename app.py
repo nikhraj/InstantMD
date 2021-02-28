@@ -1,9 +1,10 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 import re
+import os
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -19,7 +20,8 @@ class PatientData(db.Model):
     asymptom = db.Column(db.String(200))
     afactors = db.Column(db.String(300))
     rfactors = db.Column(db.String(300))
-
+    
+db.init_app()
 
 @app.route("/")
 @app.route("/home")		
