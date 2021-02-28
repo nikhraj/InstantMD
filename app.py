@@ -9,6 +9,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class PatientData(db.Model):
+    __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     gender = db.Column(db.String(5))
