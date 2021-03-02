@@ -22,7 +22,7 @@ class PatientData(db.Model):
     afactors = db.Column(db.String(300))
     rfactors = db.Column(db.String(300))
     
-db.init_app()
+#db.init_app()
 
 @app.route("/")
 @app.route("/home")		
